@@ -27,28 +27,24 @@ public class TicTacToe {
     }
 
     private void initGame() {
-        /*System.out.println("Single (press s) or Multiplayer (press m)?");
-        Player player1 = addPlayer(true, true);
-        Player player2;
+        BufferedReader reader =new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Single (press s) or Multiplayer (press m)?");
+        player1 = addPlayer(true, Mark.CROSS);
         while (true) {
             try {
-                if (game.input().equals("s")) {
-                    player2 = addPlayer(false, false);
+                String input = reader.readLine();
+                if (input.equals("s")) {
+                    player2 = addPlayer(false, Mark.NOUGHT);
                     break;
-                } else if (game.input().equals("m")) {
-                    player2 = addPlayer(true, false);
+                } else if (input.equals("m")) {
+                    player2 = addPlayer(true, Mark.NOUGHT);
                     break;
                 } else throw new IOException();
             } catch (IOException e) {
                 System.out.println("Invalid input");
             }
-        }*/
-        player1 = addPlayer(true, Mark.CROSS);
-        player2 = addPlayer(false, Mark.NOUGHT);
+        }
     }
-
-
-    //Win methods
 
     private void gameloop() { //need to find a good way to catch wrong input
         Player currentPlayer = player1;

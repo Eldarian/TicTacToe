@@ -19,6 +19,7 @@ public class RealPlayer implements Player {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String[] turnString = reader.readLine().split("\\s");
         return new int[]{Integer.parseInt(turnString[0]) - 1, Integer.parseInt(turnString[1]) - 1};
+
 //        Scanner inputScanner = new Scanner(System.in);
 //        System.out.println("Insert coordinates:");
 //        int[] result = new int[2];
