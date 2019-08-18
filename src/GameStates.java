@@ -1,0 +1,3 @@
+public enum GameStates {
+    CROSSESWON, NOUGHTSWON, DRAW, PLAYING, WAITNEWGAME
+}
