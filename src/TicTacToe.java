@@ -51,7 +51,6 @@ public class TicTacToe {
     private void playingLoop() { //need to find a good way to catch wrong input
         Player currentPlayer = player1.getMark()==Mark.CROSS ? player1 : player2;
         while (gameState == GameStates.PLAYING) {
-            try {
                 if (currentPlayer instanceof RealPlayer) {
                     System.out.println("Make your turn, "+ currentPlayer.getMark() + ". Pattern: n n, n={1-3}");
                 }
@@ -65,9 +64,7 @@ public class TicTacToe {
                 }
                 if (gameGrid.checkFullGrid()) gameState=GameStates.DRAW;
                 currentPlayer = currentPlayer == player1 ? currentPlayer = player2 : player1;
-            } catch (IOException e) {
-                System.out.println("IOException!");
-            }
+
         }
     }
 
