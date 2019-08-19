@@ -45,7 +45,7 @@ public class ArtificialPlayer implements Player {
         }
 
         //Random turn
-        ArrayList<Integer> random=possibles.get(ThreadLocalRandom.current().nextInt(0, 3));
+        ArrayList<Integer> random=possibles.get(ThreadLocalRandom.current().nextInt(0, possibles.size()));
         return new int[]{random.get(0), random.get(1)};
     }
 

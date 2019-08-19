@@ -7,16 +7,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TicTacToe {
-    private static final int gridSize = 3;
+    static final int gridSize = 3;
     static TicTacToe game;
-    Player player1;
-    Player player2;
+    private Player player1;
+    private Player player2;
     Grid gameGrid;
-    int[] lastTurn;
-    GameStates gameState=GameStates.WAITNEWGAME;
+    private GameStates gameState=GameStates.WAITNEWGAME;
 
-    TicTacToe() {
-        initGame();
+    private TicTacToe() {
     }
 
     //gamestart methods
@@ -35,13 +33,12 @@ public class TicTacToe {
         while (true) {
             try {
                 String input = reader.readLine();
+                Mark p2Mark = player1.getMark()==Mark.CROSS ? Mark.NOUGHT : Mark.CROSS;
                 if (input.equals("s")) {
-                    player2 = addPlayer(false, player1.getMark()==Mark.CROSS ? Mark.NOUGHT : Mark.CROSS);
-                    gameState = GameStates.PLAYING;
+                    player2 = addPlayer(false, p2Mark);
                     break;
                 } else if (input.equals("m")) {
-                    player2 = addPlayer(false, player1.getMark()==Mark.CROSS ? Mark.NOUGHT : Mark.CROSS);
-                    gameState = GameStates.PLAYING;
+                    player2 = addPlayer(true, p2Mark);
                     break;
                 } else throw new IOException();
             } catch (IOException e) {
@@ -68,7 +65,6 @@ public class TicTacToe {
                 }
                 if (gameGrid.checkFullGrid()) gameState=GameStates.DRAW;
                 currentPlayer = currentPlayer == player1 ? currentPlayer = player2 : player1;
-                lastTurn = currentTurn;
             } catch (IOException e) {
                 System.out.println("IOException!");
             }
