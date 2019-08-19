@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class RealPlayer implements Player {
@@ -26,7 +23,6 @@ public class RealPlayer implements Player {
                 for (int i = 0; i<2; i++) {
                     if (inputScanner.hasNextInt()) {
                         result[i] = inputScanner.nextInt() - 1;
-                        System.out.println(result[i]);
                         if (result[i] < 0 || result[i] >= TicTacToe.gridSize) {
                             System.out.println("Invalid input, try again (1-3).");
                             break;
@@ -36,6 +32,7 @@ public class RealPlayer implements Player {
                         inputScanner.next();
                         break;
                     }
+
                 }
             } while (result[0]<0 || result[0]>=TicTacToe.gridSize || result[1]<0 || result[1]>=TicTacToe.gridSize);
 

@@ -1,5 +1,5 @@
-public class Grid {
-    final int gridSize;
+class Grid {
+    private final int gridSize;
     private Cell[][] grid;
 
     Grid(int gridSize) {
@@ -14,7 +14,7 @@ public class Grid {
         this.initGrid(grid);
     }
 
-    void initGrid() {
+    private void initGrid() {
         for (int i = 0; i<gridSize; i++) {
             for (int j = 0; j<gridSize; j++) {
                 this.grid[i][j] = new Cell(Mark.EMPTY);
@@ -22,7 +22,7 @@ public class Grid {
         }
     }
 
-    void initGrid(Cell[][] grid) {
+    private void initGrid(Cell[][] grid) {
         for (int i = 0; i<gridSize; i++) {
             for (int j = 0; j<gridSize; j++) {
                 this.grid[i][j] = new Cell(grid[i][j].own);
