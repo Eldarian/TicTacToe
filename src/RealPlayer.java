@@ -14,6 +14,8 @@ public class RealPlayer implements Player {
         return mark;
     }
 
+
+
     @Override
     public int[] turn() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
