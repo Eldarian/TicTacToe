@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,25 +27,25 @@ public class TicTacToe {
     private void initGame() {
         gameGrid = new Grid(gridSize);
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Single (press s) or Multiplayer (press m)?");
         Random r = new Random();
         player1 = addPlayer(true, r.nextBoolean() ? Mark.CROSS:Mark.NOUGHT);
+
+        Scanner scanPlayers = new Scanner(System.in);
+        String input;
         while (true) {
-            try {
-                String input = reader.readLine();
-                Mark p2Mark = player1.getMark()==Mark.CROSS ? Mark.NOUGHT : Mark.CROSS;
-                if (input.equals("s")) {
-                    player2 = addPlayer(false, p2Mark);
-                    break;
-                } else if (input.equals("m")) {
-                    player2 = addPlayer(true, p2Mark);
-                    break;
-                } else throw new IOException();
-            } catch (IOException e) {
-                System.out.println("Invalid input");
+            if (scanPlayers.hasNext("[sm]")) {
+                input = scanPlayers.next("[sm]");
+                break;
+            } else {
+                System.out.println("Press s or m");
+                scanPlayers.next();
             }
         }
+        Mark p2Mark = player1.getMark()==Mark.CROSS ? Mark.NOUGHT : Mark.CROSS;
+        if (input.equals("s")) {
+            player2 = addPlayer(false, p2Mark);
+        } else player2 = addPlayer(true, p2Mark);
         gameState = GameStates.PLAYING;
     }
 
